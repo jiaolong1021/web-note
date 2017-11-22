@@ -1,4 +1,6 @@
-# web-note
+# web笔记
+
+## [Javascript](/javascript.md)
 
 
 
