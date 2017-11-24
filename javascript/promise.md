@@ -10,7 +10,7 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 
 参数： executor是一个带有`resolve` 和 `reject` 两个参数的函数 。
 
-`executor`函数在Promise构造函数执行时同步执行，被传递 `resolve` 和 `reject` 函数（executor 函数在Promise构造函数返回新建对象前被调用）。`resolve` 和 `reject` 函数被调用时，分别将promise的状态改为_fulfilled（_完成）或rejected（失败）。executor 内部通常会执行一些异步操作，一旦完成，可以调用resolve函数来将promise状态成_fulfilled_，或者在发生错误时将它的状态改为rejected。
+`executor`函数在Promise构造函数执行时同步执行，被传递 `resolve` 和 `reject` 函数（executor 函数在Promise构造函数返回新建对象前被调用）。`resolve` 和 `reject` 函数被调用时，分别将promise的状态改为_fulfilled（_完成）或rejected（失败）。executor 内部通常会执行一些异步操作，一旦完成，可以调用resolve函数来将promise状态成_fulfilled_，或者在发生错误时将它的状态改为rejected。
 
 #### 方法：
 
@@ -35,25 +35,25 @@ new Promise( function(resolve, reject) {...} /* executor */  );
 说明：promise向下传参，promise通过resolve， then通过return。
 
 ```js
-   let myFirstPromise = new Promise(function(resolve, reject){
-	    //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
-	    //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
-	    setTimeout(function(){
-		    //reject("失败");
-		    resolve("成功!"); //代码正常执行！
-	    }, 250);
-    });
+let myFirstPromise = new Promise(function(resolve, reject){
+    //当异步代码执行成功时，我们才会调用resolve(...), 当异步代码失败时就会调用reject(...)
+    //在本例中，我们使用setTimeout(...)来模拟异步代码，实际编码时可能是XHR请求或是HTML5的一些API方法.
+    setTimeout(function(){
+        //reject("失败");
+        resolve("成功!"); //代码正常执行！
+    }, 250);
+});
 
-    myFirstPromise.then(function(successMessage){
-	    //successMessage的值是上面调用resolve(...)方法传入的值.
-	    //successMessage参数不一定非要是字符串类型，这里只是举个例子
-	    console.log("Yay! " + successMessage);
-	    return 'secMsg';
-    }).then(function (secMsg) {
-	    console.log(secMsg);
-    }).catch(function (error) {
-	    console.log(error);
-    });
+myFirstPromise.then(function(successMessage){
+    //successMessage的值是上面调用resolve(...)方法传入的值.
+    //successMessage参数不一定非要是字符串类型，这里只是举个例子
+    console.log("Yay! " + successMessage);
+    return 'secMsg';
+}).then(function (secMsg) {
+    console.log(secMsg);
+}).catch(function (error) {
+    console.log(error);
+});
 ```
 
 
