@@ -2,5 +2,7 @@
 
 ## [数据类型](/javascript/shu-ju-lei-xing.md)
 
+## [promise](/javascript/promise.md)
+
 
 
